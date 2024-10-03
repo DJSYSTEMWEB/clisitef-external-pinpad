@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_clisitef/clisitef.dart';
+import 'package:clisitef_sk210/clisitef.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 // class MockClisitefPlatform

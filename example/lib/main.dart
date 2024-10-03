@@ -1,18 +1,18 @@
-import 'package:flutter_clisitef/model/clisitef_configuration.dart';
-import 'package:flutter_clisitef/model/clisitef_data.dart';
-import 'package:flutter_clisitef/model/data_events.dart';
-import 'package:flutter_clisitef/model/modalidade.dart';
-import 'package:flutter_clisitef/model/pinpad_information.dart';
-import 'package:flutter_clisitef/model/tipo_pinpad.dart';
-import 'package:flutter_clisitef/model/transaction.dart';
-import 'package:flutter_clisitef/model/transaction_events.dart';
-import 'package:flutter_clisitef/pdv/clisitef_pdv.dart';
-import 'package:flutter_clisitef/pdv/simulated_pin_pad_widget.dart';
+import 'package:clisitef_sk210/model/clisitef_configuration.dart';
+import 'package:clisitef_sk210/model/clisitef_data.dart';
+import 'package:clisitef_sk210/model/data_events.dart';
+import 'package:clisitef_sk210/model/modalidade.dart';
+import 'package:clisitef_sk210/model/pinpad_information.dart';
+import 'package:clisitef_sk210/model/tipo_pinpad.dart';
+import 'package:clisitef_sk210/model/transaction.dart';
+import 'package:clisitef_sk210/model/transaction_events.dart';
+import 'package:clisitef_sk210/pdv/clisitef_pdv.dart';
+import 'package:clisitef_sk210/pdv/simulated_pin_pad_widget.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
-import 'package:flutter_clisitef/clisitef.dart';
+import 'package:clisitef_sk210/clisitef.dart';
 
 void main() {
   runApp(const MaterialApp(home: MyApp()));

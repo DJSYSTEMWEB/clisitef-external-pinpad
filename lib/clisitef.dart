@@ -2,8 +2,8 @@ library clisitef;
 
 import 'dart:io';
 
-import 'package:flutter_clisitef/android/clisitef_android.dart';
-import 'package:flutter_clisitef/clisitef_sdk.dart';
+import 'package:clisitef_sk210/android/clisitef_android.dart';
+import 'package:clisitef_sk210/clisitef_sdk.dart';
 import 'package:flutter/services.dart';
 
 class CliSitef {
