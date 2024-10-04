@@ -2,8 +2,8 @@ library clisitef;
 
 import 'dart:async';
 
-import 'package:clisitef_sk210/model/transaction.dart';
-import 'package:clisitef_sk210/model/transaction_events.dart';
+import 'package:clisitef_external_pinpad/model/transaction.dart';
+import 'package:clisitef_external_pinpad/model/transaction_events.dart';
 
 class TransactionStream {
   TransactionStream(

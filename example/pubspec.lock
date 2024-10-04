@@ -25,7 +25,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.3.0"
-  clisitef_sk210:
+  clisitef_external_pinpad:
     dependency: "direct main"
     description:
       path: ".."

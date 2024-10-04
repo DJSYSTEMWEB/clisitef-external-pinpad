@@ -18,7 +18,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  clisitef_sk210:
+  clisitef_external_pinpad:
     # When depending on this package from a real application you should use:
     #   clisitef: ^x.y.z
     # See https://dart.dev/tools/pub/dependencies#version-constraints

@@ -1,6 +1,6 @@
 library clisitef;
 
-import 'package:clisitef_sk210/model/pinpad_events.dart';
+import 'package:clisitef_external_pinpad/model/pinpad_events.dart';
 
 class PinPadInformation {
   PinPadInformation({required this.isPresent});

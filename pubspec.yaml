@@ -1,5 +1,5 @@
-name: clisitef_sk210
-description: Pacote Clisitef para o dispositivo SK210
+name: clisitef_external_pinpad
+description: Pacote Clisitef para os dispositivos que possuem Pinpad externo
 version: 0.0.1
 homepage:
 

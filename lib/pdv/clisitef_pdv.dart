@@ -1,17 +1,17 @@
 library clisitef;
 
-import 'package:clisitef_sk210/clisitef_sdk.dart';
-import 'package:clisitef_sk210/model/clisitef_configuration.dart';
-import 'package:clisitef_sk210/model/clisitef_data.dart';
-import 'package:clisitef_sk210/model/clisitef_resp.dart';
+import 'package:clisitef_external_pinpad/clisitef_sdk.dart';
+import 'package:clisitef_external_pinpad/model/clisitef_configuration.dart';
+import 'package:clisitef_external_pinpad/model/clisitef_data.dart';
+import 'package:clisitef_external_pinpad/model/clisitef_resp.dart';
 
-import 'package:clisitef_sk210/model/pinpad_events.dart';
-import 'package:clisitef_sk210/model/pinpad_information.dart';
-import 'package:clisitef_sk210/model/transaction.dart';
-import 'package:clisitef_sk210/model/transaction_events.dart';
-import 'package:clisitef_sk210/pdv/stream/data_stream.dart';
-import 'package:clisitef_sk210/pdv/stream/pin_pad_stream.dart';
-import 'package:clisitef_sk210/pdv/stream/transaction_stream.dart';
+import 'package:clisitef_external_pinpad/model/pinpad_events.dart';
+import 'package:clisitef_external_pinpad/model/pinpad_information.dart';
+import 'package:clisitef_external_pinpad/model/transaction.dart';
+import 'package:clisitef_external_pinpad/model/transaction_events.dart';
+import 'package:clisitef_external_pinpad/pdv/stream/data_stream.dart';
+import 'package:clisitef_external_pinpad/pdv/stream/pin_pad_stream.dart';
+import 'package:clisitef_external_pinpad/pdv/stream/transaction_stream.dart';
 import 'package:flutter/services.dart';
 
 class CliSiTefPDV {

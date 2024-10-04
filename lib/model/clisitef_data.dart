@@ -1,6 +1,6 @@
 library clisitef;
 
-import 'package:clisitef_sk210/model/data_events.dart';
+import 'package:clisitef_external_pinpad/model/data_events.dart';
 
 class CliSiTefData {
   CliSiTefData(

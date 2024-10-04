@@ -19,7 +19,7 @@ rootProject.allprojects {
         google()
         mavenCentral()
         flatDir {
-            dirs project(':clisitef_sk210').file('libs')
+            dirs project(':clisitef_external_pinpad').file('libs')
         }        
     }
 }
