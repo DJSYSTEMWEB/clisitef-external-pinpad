@@ -60,5 +60,5 @@ android {
 }
 
 dependencies {
-    implementation files('src/main/kotlin/libs/clisitef-android.jar')
+    implementation files('src/main/kotlin/libs/clisitef-producao.jar')
 }
