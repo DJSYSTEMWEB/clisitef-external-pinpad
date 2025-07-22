@@ -163,7 +163,6 @@ class CliSiTefAndroid implements CliSiTefSDK {
     String operador, {
     String restricoes = '',
   }) async {
-    int valorSitef = (valor * 100).round();
     bool? success =
         await _methodChannel.invokeMethod<bool>('startTransaction', {
       'modalidade': modalidade,
