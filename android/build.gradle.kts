@@ -6,6 +6,11 @@ plugins {
 group = "com.loopmarket.clisitef"
 version = "1.5"
 
+repositories {
+    google()
+    mavenCentral()
+}
+
 rootProject.allprojects {
     repositories {
         google()
@@ -57,5 +62,4 @@ android {
 
 dependencies {
     implementation(mapOf("name" to "clisitef_external-1.0.0", "ext" to "jar"))
-
 }
