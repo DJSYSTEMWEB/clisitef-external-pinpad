@@ -3,7 +3,7 @@ plugins {
     kotlin("android")
 }
 
-group = "com.loopmarket.clisitef"
+group = "com.loopmarket.clisitef_external_pinpad"
 version = "1.5"
 
 repositories {
@@ -16,14 +16,14 @@ rootProject.allprojects {
         google()
         mavenCentral()
         flatDir {
-            dirs(project(":clisitef").file("libs"))
+            dirs(project(":clisitef_external_pinpad").file("libs"))
         }
     }
 }
 
 android {
     compileSdk = 35
-    namespace = "com.loopmarket.clisitef"
+    namespace = "com.loopmarket.clisitef_external_pinpad"
 
     defaultConfig {
         minSdk = 21

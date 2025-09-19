@@ -1,4 +1,4 @@
-package com.loopmarket.clisitef
+package com.loopmarket.clisitef_external_pinpad
 
 import android.annotation.SuppressLint
 import android.util.Log
