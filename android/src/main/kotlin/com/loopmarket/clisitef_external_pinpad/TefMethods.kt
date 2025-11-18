@@ -1,4 +1,4 @@
-package com.loopmarket.clisitef
+package com.loopmarket.clisitef_external_pinpad
 
 import br.com.softwareexpress.sitef.android.CliSiTef
 import br.com.softwareexpress.sitef.android.ICliSiTefListener

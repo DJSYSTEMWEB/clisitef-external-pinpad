@@ -1,4 +1,4 @@
-package com.loopmarket.clisitef
+package com.loopmarket.clisitef_external_pinpad
 
 import io.flutter.plugin.common.MethodChannel.Result
 import br.com.softwareexpress.sitef.android.CliSiTef

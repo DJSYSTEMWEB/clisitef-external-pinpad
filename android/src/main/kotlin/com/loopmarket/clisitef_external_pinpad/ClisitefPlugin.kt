@@ -1,11 +1,11 @@
-package com.loopmarket.clisitef
+package com.loopmarket.clisitef_external_pinpad
 
 import android.os.Looper
 import android.app.Activity
 import androidx.annotation.NonNull
 import br.com.softwareexpress.sitef.android.CliSiTef
-import com.loopmarket.clisitef.channel.DataHandler
-import com.loopmarket.clisitef.channel.EventHandler
+import com.loopmarket.clisitef_external_pinpad.channel.DataHandler
+import com.loopmarket.clisitef_external_pinpad.channel.EventHandler
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.EventChannel
 import io.flutter.plugin.common.MethodCall

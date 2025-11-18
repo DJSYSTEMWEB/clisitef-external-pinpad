@@ -1,4 +1,4 @@
-package com.loopmarket.clisitef
+package com.loopmarket.clisitef_external_pinpad
 
 enum class DataEvents(val named: String) {
     DATA("DATA"),

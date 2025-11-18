@@ -1,4 +1,4 @@
-package com.loopmarket.clisitef
+package com.loopmarket.clisitef_external_pinpad
 
 enum class PinPadEvents(val named: String) {
     GENERIC_ERROR("GENERIC_ERROR"),

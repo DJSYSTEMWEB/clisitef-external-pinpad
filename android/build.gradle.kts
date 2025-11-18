@@ -1,30 +1,46 @@
 plugins {
     id("com.android.library")
-    id("kotlin-android")
+    kotlin("android")
 }
 
-group = "com.loopmarket.clisitef"
+group = "com.loopmarket.clisitef_external_pinpad"
 version = "1.5"
+
+repositories {
+    google()
+    mavenCentral()
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        flatDir {
+            dirs(project(":clisitef_external_pinpad").file("libs"))
+        }
+    }
+}
 
 android {
     compileSdk = 35
-    namespace = "com.loopmarket.clisitef"
+    namespace = "com.loopmarket.clisitef_external_pinpad"
 
     defaultConfig {
         minSdk = 21
+        targetSdk = 35
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
 
     java {
-        sourceCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
     }
 
     sourceSets["main"].java.srcDirs("src/main/kotlin")
@@ -45,5 +61,5 @@ android {
 }
 
 dependencies {
-    implementation("br.com.djsystem:clisitef_external:1.0.0@jar")
+    implementation(mapOf("name" to "clisitef_external-1.0.0", "ext" to "jar"))
 }

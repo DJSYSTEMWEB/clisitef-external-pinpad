@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.loopmarket.clisitef_example">
+    package="com.loopmarket.clisitef_external_pinpad_example">
    <application
-        android:label="clisitef_example"
+        android:label="clisitef_external_pinpad_example"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         tools:replace="android:label">

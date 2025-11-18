@@ -1,4 +1,4 @@
-# clisitef_example
+# clisitef_external_pinpad_example
 
 Demonstrates how to use the clisitef plugin.
 

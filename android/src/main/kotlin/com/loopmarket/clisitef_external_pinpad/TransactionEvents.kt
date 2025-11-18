@@ -1,4 +1,4 @@
-package com.loopmarket.clisitef
+package com.loopmarket.clisitef_external_pinpad
 
 enum class TransactionEvents(val named: String) {
     TRANSACTION_CONFIRM("TRANSACTION_CONFIRM"),

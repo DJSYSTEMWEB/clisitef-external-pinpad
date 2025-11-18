@@ -32,15 +32,15 @@ apply(from = "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle")
 
 android {
     compileSdk = 35
-    namespace = "com.loopmarket.clisitef_example"
+    namespace = "com.loopmarket.clisitef_external_pinpad_example"
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
 
     sourceSets["main"].java.srcDirs("src/main/kotlin")
@@ -55,7 +55,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.loopmarket.clisitef_example"
+        applicationId = "com.loopmarket.clisitef_external_pinpad_example"
         minSdk = 21
         targetSdk = 35
         versionCode = flutterVersionCode.toInt()
