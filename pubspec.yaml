@@ -1,7 +1,6 @@
 name: clisitef_external_pinpad
 description: Pacote Clisitef para os dispositivos que possuem Pinpad externo
 version: 0.0.1
-homepage:
 
 environment:
   sdk: '>=2.18.2 <4.0.0'
@@ -10,7 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  intl: ^0.19.0
+  intl: any
   plugin_platform_interface: ^2.0.2
 
 dev_dependencies:
