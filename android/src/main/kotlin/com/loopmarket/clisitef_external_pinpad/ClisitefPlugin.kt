@@ -40,13 +40,13 @@ class ClisitefPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
   override fun onAttachedToActivity(activityPluginBinding: ActivityPluginBinding) {
     activity = activityPluginBinding.activity
 
-    if(cliSiTef != null){
+    if(::cliSiTef.isInitialized){
       cliSiTef.setActivity(activity)
     }
   }
 
   override fun onDetachedFromActivityForConfigChanges() {
-    if(cliSiTef != null){
+    if(::cliSiTef.isInitialized){
       cliSiTef.setActivity(null)
     }
   }
@@ -54,14 +54,14 @@ class ClisitefPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
   override fun onReattachedToActivityForConfigChanges(activityPluginBinding: ActivityPluginBinding) {
     activity = activityPluginBinding.activity
 
-    if(cliSiTef != null){
+    if(::cliSiTef.isInitialized){
       cliSiTef.setActivity(activity)
     }
 
   }
 
   override fun onDetachedFromActivity() {
-    if(cliSiTef != null){
+    if(::cliSiTef.isInitialized){
       cliSiTef.setActivity(null)
     }
   }
