@@ -1,11 +1,11 @@
-package com.loopmarket.clisitef
+package com.loopmarket.clisitef_external_pinpad
 
 import android.os.Looper
 import android.app.Activity
 import androidx.annotation.NonNull
 import br.com.softwareexpress.sitef.android.CliSiTef
-import com.loopmarket.clisitef.channel.DataHandler
-import com.loopmarket.clisitef.channel.EventHandler
+import com.loopmarket.clisitef_external_pinpad.channel.DataHandler
+import com.loopmarket.clisitef_external_pinpad.channel.EventHandler
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.EventChannel
 import io.flutter.plugin.common.MethodCall
@@ -40,13 +40,13 @@ class ClisitefPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
   override fun onAttachedToActivity(activityPluginBinding: ActivityPluginBinding) {
     activity = activityPluginBinding.activity
 
-    if(cliSiTef != null){
+    if(::cliSiTef.isInitialized){
       cliSiTef.setActivity(activity)
     }
   }
 
   override fun onDetachedFromActivityForConfigChanges() {
-    if(cliSiTef != null){
+    if(::cliSiTef.isInitialized){
       cliSiTef.setActivity(null)
     }
   }
@@ -54,14 +54,14 @@ class ClisitefPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
   override fun onReattachedToActivityForConfigChanges(activityPluginBinding: ActivityPluginBinding) {
     activity = activityPluginBinding.activity
 
-    if(cliSiTef != null){
+    if(::cliSiTef.isInitialized){
       cliSiTef.setActivity(activity)
     }
 
   }
 
   override fun onDetachedFromActivity() {
-    if(cliSiTef != null){
+    if(::cliSiTef.isInitialized){
       cliSiTef.setActivity(null)
     }
   }
@@ -88,23 +88,48 @@ class ClisitefPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
   }
 
 
-  override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
-    tefMethods.setResultHandler(result);
-    pinPadMethods.setResultHandler(result);
+override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
+    tefMethods.setResultHandler(result)
+    pinPadMethods.setResultHandler(result)
     when (call.method) {
-      "setPinpadDisplayMessage" -> pinPadMethods.setDisplayMessage(call.argument<String>("message")!!)
-      "pinpadReadYesNo" -> pinPadMethods.readYesOrNo(call.argument<String>("message")!!)
-      "pinpadIsPresent" -> pinPadMethods.isPresent()
-      "configure" -> tefMethods.configure(call.argument<String>("enderecoSitef")!!, call.argument<String>("codigoLoja")!!, call.argument<String>("numeroTerminal")!!, "[[TipoPinPad="+call.argument<String>("tipoPinPad")!!+"];[ParmsClient=1="+call.argument<String>("cnpjLoja")!!+";2="+call.argument<String>("cnpjAutomacao")!!+"]];"+call.argument<String>("parametrosAdicionais")!!)
-      "getQttPendingTransactions" -> tefMethods.getQttPendingTransactions(call.argument<String>("dataFiscal")!!, call.argument<String>("cupomFiscal")!!)
-      "startTransaction" -> tefMethods.startTransaction(cliSiTefListener, call.argument<Int>("modalidade")!!, call.argument<String>("valor")!!, call.argument<String>("cupomFiscal")!!, call.argument<String>("dataFiscal")!!, call.argument<String>("horario")!!, call.argument<String>("operador")!!, call.argument<String>("restricoes")!!)
-      "finishLastTransaction" -> tefMethods.finishLastTransaction(call.argument<Int>("confirma")!!)
-      "finishTransaction" -> tefMethods.finishTransaction(call.argument<Int>("confirma")!!, call.argument<String>("cupomFiscal")!!, call.argument<String>("dataFiscal")!!, call.argument<String>("horaFiscal")!!)
-      "abortTransaction" -> tefMethods.abortTransaction(call.argument<Int>("continua")!!)
-      "continueTransaction" -> tefMethods.continueTransaction(call.argument<String>("data")!!)
-      else -> result.notImplemented()
+        "setPinpadDisplayMessage" -> pinPadMethods.setDisplayMessage(call.argument<String>("message")!!)
+        "pinpadReadYesNo" -> pinPadMethods.readYesOrNo(call.argument<String>("message")!!)
+        "pinpadIsPresent" -> pinPadMethods.isPresent()
+        "configure" -> tefMethods.configure(
+            call.argument<String>("enderecoSitef")!!,
+            call.argument<String>("codigoLoja")!!,
+            call.argument<String>("numeroTerminal")!!,
+            "[[TipoPinPad=" + call.argument<String>("tipoPinPad")!! + "];[ParmsClient=1=" + 
+            call.argument<String>("cnpjLoja")!! + ";2=" + call.argument<String>("cnpjAutomacao")!! + "]]" +
+            (call.argument<String>("parametrosAdicionais")?.takeIf { it.isNotEmpty() }?.let { ";$it" } ?: "")
+        )
+        "getQttPendingTransactions" -> tefMethods.getQttPendingTransactions(
+            call.argument<String>("dataFiscal")!!, 
+            call.argument<String>("cupomFiscal")!!
+        )
+        "startTransaction" -> tefMethods.startTransaction(
+            cliSiTefListener,
+            call.argument<Int>("modalidade")!!,
+            call.argument<String>("valor")!!,
+            call.argument<String>("cupomFiscal")!!,
+            call.argument<String>("dataFiscal")!!,
+            call.argument<String>("horario")!!,
+            call.argument<String>("operador")!!,
+            call.argument<String>("restricoes")!!
+        )
+        "finishLastTransaction" -> tefMethods.finishLastTransaction(call.argument<Int>("confirma")!!)
+        "finishTransaction" -> tefMethods.finishTransaction(
+            call.argument<Int>("confirma")!!,
+            call.argument<String>("cupomFiscal")!!,
+            call.argument<String>("dataFiscal")!!,
+            call.argument<String>("horaFiscal")!!
+        )
+        "abortTransaction" -> tefMethods.abortTransaction(call.argument<Int>("continua")!!)
+        "continueTransaction" -> tefMethods.continueTransaction(call.argument<String>("data")!!)
+        else -> result.notImplemented()
     }
-  }
+}
+
 
   override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
     methodChannel.setMethodCallHandler(null)

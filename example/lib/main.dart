@@ -32,7 +32,7 @@ class _MyAppState extends State<MyApp> {
 
   String pinPadInfo = '';
 
-  final bool _isSimulated = false; //Indicate if has PinPad
+  final bool _isSimulated = false;
 
   TransactionEvents transactionStatus = TransactionEvents.unknown;
 

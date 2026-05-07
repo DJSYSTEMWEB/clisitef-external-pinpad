@@ -1,11 +1,10 @@
-package com.loopmarket.clisitef
+package com.loopmarket.clisitef_external_pinpad
 
 
 import android.os.Handler
 import android.os.Looper
 import android.os.Message
 import br.com.softwareexpress.sitef.android.CliSiTef
-import br.com.softwareexpress.sitef.android.CliSiTefI
 import br.com.softwareexpress.sitef.android.ICliSiTefListener
 import io.flutter.Log
 import io.flutter.plugin.common.EventChannel.EventSink
@@ -74,18 +73,20 @@ class CliSiTefListener(private val cliSiTef: CliSiTef): ICliSiTefListener {
         if (currentStage == 1) {
             if (resultCode == 0) {
                 try {
-                    // cliSiTef.finishTransaction(1)
                     eventSink?.success(TransactionEvents.TRANSACTION_CONFIRM.named)
                 } catch (e: Exception) {
                     eventSink?.error(TransactionEvents.TRANSACTION_FAILED.named, e.toString(), e)
                 }
+            } else {
+                eventSink?.error(TransactionEvents.TRANSACTION_ERROR.named, null, null)
             }
         } else {
             if (resultCode == 0) {
                 eventSink?.success(TransactionEvents.TRANSACTION_OK.named)
+            } else {
+                eventSink?.error(TransactionEvents.TRANSACTION_ERROR.named, null, null)
             }
         }
-        eventSink?.error(TransactionEvents.TRANSACTION_ERROR.named, null, null)
     }
 
     fun setEventSink(sink: EventSink?) {
@@ -99,13 +100,13 @@ class CliSiTefListener(private val cliSiTef: CliSiTef): ICliSiTefListener {
     fun onMessage(looper: Looper) = Handler(looper) {
         message ->
         when (message.what) {
-            CliSiTefI.EVT_INICIA_ATIVACAO_BT -> eventSink?.success(PinPadEvents.START_BLUETOOTH.named)
-            CliSiTefI.EVT_FIM_ATIVACAO_BT -> eventSink?.success(PinPadEvents.END_BLUETOOTH.named)
-            CliSiTefI.EVT_INICIA_AGUARDA_CONEXAO_PP -> eventSink?.success(PinPadEvents.WAITING_PINPAD_CONNECTION.named)
-            CliSiTefI.EVT_FIM_AGUARDA_CONEXAO_PP -> eventSink?.success(PinPadEvents.PINPAD_OK.named)
-            CliSiTefI.EVT_PP_BT_CONFIGURANDO -> eventSink?.success(PinPadEvents.WAITING_PINPAD_BLUETOOTH.named)
-            CliSiTefI.EVT_PP_BT_CONFIGURADO -> eventSink?.success(PinPadEvents.PINPAD_BLUETOOTH_CONNECTED.named)
-            CliSiTefI.EVT_PP_BT_DESCONECTADO -> eventSink?.success(PinPadEvents.PINPAD_BLUETOOTH_DISCONNECTED.named)
+            CliSiTef.EVT_BEGIN_BT_STARTUP -> eventSink?.success(PinPadEvents.START_BLUETOOTH.named)
+            CliSiTef.EVT_END_BT_STARTUP -> eventSink?.success(PinPadEvents.END_BLUETOOTH.named)
+            CliSiTef.EVT_BEGIN_PP_CONNECT -> eventSink?.success(PinPadEvents.WAITING_PINPAD_CONNECTION.named)
+            CliSiTef.EVT_END_PP_CONNECT -> eventSink?.success(PinPadEvents.PINPAD_OK.named)
+            CliSiTef.EVT_BEGIN_PP_CONFIG -> eventSink?.success(PinPadEvents.WAITING_PINPAD_BLUETOOTH.named)
+            CliSiTef.EVT_END_PP_CONFIG -> eventSink?.success(PinPadEvents.PINPAD_BLUETOOTH_CONNECTED.named)
+            CliSiTef.EVT_BT_PP_DISCONNECT -> eventSink?.success(PinPadEvents.PINPAD_BLUETOOTH_DISCONNECTED.named)
             else -> eventSink?.error(PinPadEvents.GENERIC_ERROR.named, message.what.toString(), message)
         }
         true
