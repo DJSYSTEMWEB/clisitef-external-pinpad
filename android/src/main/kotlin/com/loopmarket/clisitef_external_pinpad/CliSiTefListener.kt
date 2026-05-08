@@ -53,9 +53,9 @@ class CliSiTefListener(private val cliSiTef: CliSiTef): ICliSiTefListener {
             CliSiTef.CMD_GET_FIELD_BARCODE -> clisitefData = CliSiTefData(DataEvents.GET_FIELD_BARCODE, currentStage, cliSiTef.buffer, false, maxLength = maxLength, minLength = minLength)
             CliSiTef.CMD_GET_PINPAD_CONFIRMATION -> clisitefData = CliSiTefData(DataEvents.GET_PINPAD_CONFIRMATION, currentStage, cliSiTef.buffer, false, maxLength = maxLength, minLength = minLength)            
             CliSiTef.CMD_GET_MASKED_FIELD -> clisitefData = CliSiTefData(DataEvents.GET_MASKED_FIELD, currentStage, cliSiTef.buffer, false, maxLength = maxLength, minLength = minLength)
-            CliSiTef.CMD_SHOW_QRCODE_FIELD -> clisitefData = CliSiTefData(DataEvents.SHOW_QRCODE_FIELD, currentStage, cliSiTef.buffer)
+            CliSiTef.CMD_SHOW_QRCODE_FIELD -> clisitefData = CliSiTefData(DataEvents.SHOW_QRCODE_FIELD, currentStage, cliSiTef.buffer, false)
             CliSiTef.CMD_REMOVE_QRCODE_FIELD -> clisitefData = CliSiTefData(DataEvents.REMOVE_QRCODE_FIELD, currentStage, cliSiTef.buffer)
-            CliSiTef.CMD_MESSAGE_QRCODE -> clisitefData = CliSiTefData(DataEvents.MESSAGE_QRCODE, currentStage, cliSiTef.buffer)
+            CliSiTef.CMD_MESSAGE_QRCODE -> clisitefData = CliSiTefData(DataEvents.MESSAGE_QRCODE, currentStage, cliSiTef.buffer, false)
             else -> Log.i("CliSiTefListener", "onData Default case for command $command")
         }
 
