@@ -61,5 +61,5 @@ android {
 }
 
 dependencies {
-    implementation(mapOf("name" to "clisitef_external-1.0.0", "ext" to "jar"))
+    implementation(mapOf("name" to "clisitef-android", "ext" to "jar"))
 }
